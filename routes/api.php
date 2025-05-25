@@ -5,6 +5,7 @@ use App\Http\Controllers\Api\PostController;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\ProfileController;
 use App\Http\Controllers\Api\ActivityLogController;
+use App\Http\Controllers\Api\PlatformController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -31,6 +32,11 @@ Route::middleware('auth:sanctum')->group(function () {
 
     Route::get('/profile', [ProfileController::class, 'show']);
     Route::post('/profile', [ProfileController::class, 'update']);
+
+    // Platforms
+    Route::get('/platforms', [PlatformController::class, 'index']);
+    Route::post('/platforms/{platformId}/toggle-active', [PlatformController::class, 'toggleActiveForUser']);
+
     
     // User profile
     Route::get('/user', function () {
